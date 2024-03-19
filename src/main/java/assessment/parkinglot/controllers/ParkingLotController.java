@@ -57,7 +57,7 @@ public class ParkingLotController {
      * Returns the amount of available parking slots to park, segregated by car type
      * @return list of spot types, with the amount of available spots for that type
      */
-    @GetMapping("/availableSpots")
+    @GetMapping("/spots")
     private ResponseEntity<List<AvailableSpots>> availableSpots() {
         return ResponseEntity.ok(parkingLotService.availableSpots());
     }

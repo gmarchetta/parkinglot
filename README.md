@@ -13,9 +13,9 @@ not using it, but left it in for the sake of completeness.
 A few endpoints were implemented:
 * /parkinglot/{id}/park: admit a vehicle into the parking lot. The Vehicle information is received in the request body.
 * /parkinglot/{id}/signoff: a vehicle leaves the parking lot. The Vehicle information is received in the request body.
-* /parkinglot/{id}/availableSpots: returns a list of different parking lot spot types, with the amount of available spots
+* /parkinglot/{id}/spots: returns a list of different parking lot spot types, with the amount of available spots
 for each one of them
-* /parkinglot/1/spots/available?vehicleType=CAR: returns true or false depending if there are available spots for the specified
+* /parkinglot/{id}/spots/available?vehicleType=CAR: returns true or false depending if there are available spots for the specified
 vehicle type in the vehicleType query param
 
 ## Disclaimers

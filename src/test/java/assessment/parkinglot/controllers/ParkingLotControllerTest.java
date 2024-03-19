@@ -71,7 +71,7 @@ public class ParkingLotControllerTest {
 
     @Test
     public void testAvailableSpots() throws Exception {
-        mockMvc.perform(get("/parkinglot/1/availableSpots")).andExpect(status().isOk());
+        mockMvc.perform(get("/parkinglot/1/spots")).andExpect(status().isOk());
         verify(parkingLotService, times(1)).availableSpots();
     }
 
