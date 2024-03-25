@@ -30,14 +30,6 @@ public class VehicleParking {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
@@ -53,10 +45,6 @@ public class VehicleParking {
     public void addParkingSlot(ParkingSlot parkingSlot) {
         parkingSlot.setAvailable(false);
         this.parkingSlots.add(parkingSlot);
-    }
-
-    public Instant getCheckin() {
-        return checkin;
     }
 
     public void setCheckin(Instant checkin) {

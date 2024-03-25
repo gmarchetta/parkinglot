@@ -12,15 +12,15 @@ public class ParkingLotTestUtils {
 
     @BeforeEach
     public void initTests() {
-        createParkingSlot(true, 1, ParkingSlotType.COMPACT);
-        createParkingSlot(true, 2, ParkingSlotType.COMPACT);
-        createParkingSlot(true, 3, ParkingSlotType.REGULAR);
-        createParkingSlot(true, 4, ParkingSlotType.REGULAR);
-        createParkingSlot(true, 5, ParkingSlotType.REGULAR);
-        createParkingSlot(true, 6, ParkingSlotType.MOTORBIKE);
+        createParkingSlot(1, ParkingSlotType.COMPACT);
+        createParkingSlot(2, ParkingSlotType.COMPACT);
+        createParkingSlot(3, ParkingSlotType.REGULAR);
+        createParkingSlot(4, ParkingSlotType.REGULAR);
+        createParkingSlot(5, ParkingSlotType.REGULAR);
+        createParkingSlot(6, ParkingSlotType.MOTORBIKE);
     }
 
-    private void createParkingSlot(boolean available, int slotNumber, ParkingSlotType type) {
+    private void createParkingSlot(int slotNumber, ParkingSlotType type) {
         ParkingSlot parkingSlot = new ParkingSlot();
         parkingSlot.setAvailable(true);
         parkingSlot.setSlotNumber(slotNumber);

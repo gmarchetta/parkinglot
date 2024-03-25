@@ -17,10 +17,3 @@ A few endpoints were implemented:
 for each one of them
 * /parkinglot/{id}/spots/available?vehicleType=CAR: returns true or false depending if there are available spots for the specified
 vehicle type in the vehicleType query param
-
-## Disclaimers
-1) Tests for VehicleParkingService and VehicleService were deprioritized due to time constraints, since they are just passthroughs.
-2) Tests were focused on the classes that added value to business: ParkingLotController, ParkingLotService and ParkingSlotService.
-3) Tests for Repositories are not included since they belong to the JPA layer
-4) Tests for domain models were not included since they do not add much value, and decided to leave them out for time
-constraints.
