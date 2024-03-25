@@ -17,3 +17,10 @@ A few endpoints were implemented:
 for each one of them
 * /parkinglot/{id}/spots/available?vehicleType=CAR: returns true or false depending if there are available spots for the specified
 vehicle type in the vehicleType query param
+
+## Outside of scope
+* An authentication mechanism will be required so only authorized users can perform operations with the API. OAuth 2 would be a
+good option. Roles could also be introduced in case we wanted to offer customers features like loyalty points, know where they 
+parked, show the checkin time, biometric checkin and checkout and so on
+* If the service is expected to be deployed to the cloud as part of a microservice architecture, a gateway would be desireable to
+expose a simple interface to the external world and hide our internals
