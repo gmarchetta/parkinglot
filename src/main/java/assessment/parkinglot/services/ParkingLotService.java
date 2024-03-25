@@ -1,5 +1,6 @@
 package assessment.parkinglot.services;
 
+import assessment.parkinglot.models.ParkingLot;
 import assessment.parkinglot.models.ParkingSlot;
 import assessment.parkinglot.models.ParkingSlotType;
 import assessment.parkinglot.models.Vehicle;
@@ -61,7 +62,7 @@ public class ParkingLotService {
         }
 
         parkingSlotService.saveAll(availableParkingSlots);
-        vehicleParkingService.saveVehicleParking(vehicleParking);
+        vehicleParkingService.save(vehicleParking);
         return availableParkingSlots;
     }
 

@@ -17,15 +17,6 @@ public class VehicleParkingService {
     }
 
     /**
-     * Saves a vehicle parking instance to DB
-     * @param vehicleParking
-     * @return the persisted VehicleParking
-     */
-    public VehicleParking saveVehicleParking(VehicleParking vehicleParking) {
-        return vehicleParkingRepository.save(vehicleParking);
-    }
-
-    /**
      * Finds a VehicleParking for a Vehicle currently parked in the parking lot
      * @param parkedVehicle vehicle that we want to find
      * @return a vehicle parking that has information about the vehicle parked (slot where it parked, checkin...)

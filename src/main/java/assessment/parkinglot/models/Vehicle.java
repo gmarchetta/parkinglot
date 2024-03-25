@@ -20,10 +20,6 @@ public class Vehicle {
         return vehicleId;
     }
 
-    public void setVehicleId(UUID vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
     public VehicleType getType() {
         return type;
     }

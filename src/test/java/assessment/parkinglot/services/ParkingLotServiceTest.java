@@ -7,12 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import assessment.parkinglot.models.ParkingSlot;
+import assessment.parkinglot.models.ParkingSlotType;
 import assessment.parkinglot.models.Vehicle;
 import assessment.parkinglot.models.VehicleType;
+import assessment.parkinglot.repositories.ParkingLotRepository;
 import assessment.parkinglot.repositories.ParkingSlotRepository;
 import assessment.parkinglot.repositories.VehicleParkingRepository;
 import assessment.parkinglot.repositories.VehicleRepository;
+import assessment.parkinglot.services.dtos.AvailableSpots;
 import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +37,13 @@ public class ParkingLotServiceTest extends ParkingLotTestUtils {
     @Autowired
     VehicleRepository vehicleRepository;
 
+    @Autowired
+    ParkingLotRepository parkingLotRepository;
+
     @AfterEach
     public void tearDown() {
         vehicleParkingRepository.deleteAll();
+        parkingLotRepository.deleteAll();
         parkingSlotRepository.deleteAll();
         vehicleRepository.deleteAll();
     }
@@ -216,5 +224,36 @@ public class ParkingLotServiceTest extends ParkingLotTestUtils {
         vehicle.setType(VehicleType.VAN);
         parkingLotService.parkVehicle(vehicle);
         assertFalse(parkingLotService.areSpotsAvailableFor(VehicleType.VAN));
+    }
+
+    @Test
+    public void testAvailableSpots_ReturnsListOfAvailableSpots() {
+        List<AvailableSpots> availableSpots = parkingLotService.availableSpots();
+        AvailableSpots availableCompactSpots = new AvailableSpots();
+        availableCompactSpots.setAvailableSpots(2l);
+        availableCompactSpots.setParkingSlotType(ParkingSlotType.COMPACT);
+
+        AvailableSpots availableRegularSpots = new AvailableSpots();
+        availableRegularSpots.setAvailableSpots(3l);
+        availableRegularSpots.setParkingSlotType(ParkingSlotType.REGULAR);
+
+        AvailableSpots availableMotorbikeSpots = new AvailableSpots();
+        availableMotorbikeSpots.setAvailableSpots(1l);
+        availableMotorbikeSpots.setParkingSlotType(ParkingSlotType.MOTORBIKE);
+
+        assertTrue(availableSpots.stream().
+            filter(p -> p.getAvailableSpots().equals(2l)).
+            filter(p -> p.getParkingSlotType().equals(ParkingSlotType.COMPACT)).
+            findFirst().isPresent());
+
+        assertTrue(availableSpots.stream().
+                filter(p -> p.getAvailableSpots().equals(3l)).
+                filter(p -> p.getParkingSlotType().equals(ParkingSlotType.REGULAR)).
+                findFirst().isPresent());
+
+        assertTrue(availableSpots.stream().
+                filter(p -> p.getAvailableSpots().equals(1l)).
+                filter(p -> p.getParkingSlotType().equals(ParkingSlotType.MOTORBIKE)).
+                findFirst().isPresent());
     }
 }
